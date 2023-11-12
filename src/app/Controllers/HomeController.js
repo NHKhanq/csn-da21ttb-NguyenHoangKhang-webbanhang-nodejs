@@ -6,13 +6,14 @@ class HomeController {
        
             try {
               const Products = await Product.find({});
-              res.json(Products);
+              const UIProducts = Products.map(Products => Products.toObject())
+              res.render('home', { Products: UIProducts });
             } catch (error) {
               res.status(400).json({ err: "ERROR!!!" });
             }
           
 
-            name: "test"
+            
     
         // res.render('home')
     }
