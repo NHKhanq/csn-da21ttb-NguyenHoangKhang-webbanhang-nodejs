@@ -6,6 +6,10 @@ const { log } = require("console")
 const app = express()
 const port = 5000;
 
+//concect to db
+const db = require('./config/db/index.js')
+db.connect()
+
 //import function controller
 const HomeController = require('./app/Controllers/HomeController')
 const AdminController =  require('./app/Controllers/AdminController')
@@ -26,7 +30,7 @@ app.use(express.json()); //fetch, axios
 app.engine('handlebars', engine());
 app.set('view engine', 'handlebars');
 app.set('views', path.join(__dirname, 'resources/views'))
-console.log('PATH: ', path.join(__dirname, 'resources/views'))
+// console.log('PATH: ', path.join(__dirname, 'resources/views'))
 
 //routes
 app.get('/admin',AdminController.admin)
