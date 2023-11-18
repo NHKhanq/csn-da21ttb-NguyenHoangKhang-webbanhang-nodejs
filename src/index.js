@@ -12,8 +12,8 @@ db.connect()
 
 //import function controller
 const HomeController = require('./app/Controllers/HomeController')
-const AdminController =  require('./app/Controllers/AdminController')
-const SearchController = require("./app/Controllers/SearchController")
+const Product = require("./app/Controllers/ProductController.js")
+const ProductController = require("./app/Controllers/ProductController.js")
 
 //static file
 app.use(express.static(path.join(__dirname, 'public')))
@@ -33,9 +33,8 @@ app.set('views', path.join(__dirname, 'resources/views'))
 // console.log('PATH: ', path.join(__dirname, 'resources/views'))
 
 //routes
-app.get('/admin',AdminController.admin)
 app.get('/', HomeController.home)
-app.get('/search', SearchController.search)
+app.get('/Product/:slug', ProductController.detail)
 
 // console.log(req.query.q)
 
@@ -47,5 +46,5 @@ app.get('/search', SearchController.search)
 
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`App listening on port ${port}`)
 })

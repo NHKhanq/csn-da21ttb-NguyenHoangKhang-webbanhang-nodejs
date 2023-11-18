@@ -36,3 +36,34 @@
     text-decoration: none;
 }
 
+.slider-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .slide {
+    display: none;
+    width: 100%;
+    position: absolute;
+  }
+  
+  .slide img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .slide:first-child {
+    display: block;
+  }
+  
+  /* Thêm animation nếu cần */
+  @keyframes slide {
+    0% {
+      opacity: 0.4;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
