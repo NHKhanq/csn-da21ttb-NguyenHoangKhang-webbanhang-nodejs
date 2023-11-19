@@ -14,6 +14,8 @@ db.connect()
 const HomeController = require('./app/Controllers/HomeController')
 const Product = require("./app/Controllers/ProductController.js")
 const ProductController = require("./app/Controllers/ProductController.js")
+const CreateController = require("./app/Controllers/CreateController.js")
+
 
 //static file
 app.use(express.static(path.join(__dirname, 'public')))
@@ -26,7 +28,7 @@ app.use(express.urlencoded())//from
 app.use(express.json()); //fetch, axios
 
 
-//handlebar
+//handlebars
 app.engine('handlebars', engine());
 app.set('view engine', 'handlebars');
 app.set('views', path.join(__dirname, 'resources/views'))
@@ -34,7 +36,9 @@ app.set('views', path.join(__dirname, 'resources/views'))
 
 //routes
 app.get('/', HomeController.home)
+app.get('/create', CreateController.create)
 app.get('/Product/:slug', ProductController.detail)
+app.post('/create/post', CreateController.post)
 
 // console.log(req.query.q)
 

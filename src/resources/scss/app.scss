@@ -20,6 +20,7 @@
     padding: 10px;
     justify-content: center;
     object-fit: cover;
+    border-radius: 10%;
     transition: transform 0.3s ease;
 }
 
@@ -66,4 +67,5 @@
       opacity: 1;
     }
   }
-  
+
+
