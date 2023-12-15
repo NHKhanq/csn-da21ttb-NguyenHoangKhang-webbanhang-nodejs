@@ -6,6 +6,10 @@ const { log } = require("console")
 const app = express()
 const port = 5000;
 
+// const multer = require('multer');
+// const storage = multer.memoryStorage();
+// const upload = multer({ storage: storage });
+
 //concect to db
 const db = require('./config/db/index.js')
 db.connect()
@@ -15,6 +19,8 @@ const HomeController = require('./app/Controllers/HomeController')
 const Product = require("./app/Controllers/ProductController.js")
 const ProductController = require("./app/Controllers/ProductController.js")
 const CreateController = require("./app/Controllers/CreateController.js")
+const SearchController = require("./app/Controllers/SearchController.js")
+
 
 
 //static file
@@ -37,8 +43,10 @@ app.set('views', path.join(__dirname, 'resources/views'))
 //routes
 app.get('/', HomeController.home)
 app.get('/create', CreateController.create)
+app.get('/search', SearchController.search)
 app.get('/Product/:slug', ProductController.detail)
 app.post('/create/post', CreateController.post)
+
 
 // console.log(req.query.q)
 
