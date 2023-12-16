@@ -1,9 +1,7 @@
 <div class="container mt-5">
     <div class="row">
-        <!-- Chi tiết sản phẩm -->
         <div class="col-md-8">
             <h2>{{productdetail.name}}</h2>
-            <!-- Thêm thẻ slide nếu cần -->
             <img src="{{productdetail.image_url}}" alt="{{productdetail.name}}" class="mt-4">
             <p>{{productdetail.description}}</p>
         </div>
@@ -21,10 +19,8 @@
                             </tr>
                             <tr>
                                 <th scope="row">Giá</th>
-                                <!-- Sửa đổi class của span -->
                                 <td><span class="money" id="formattedPrice">{{productdetail.price}} VNĐ</span></td>
                             </tr>
-                            <!-- Thêm các trường khác từ cơ sở dữ liệu -->
                             <tr>
                                 <th scope="row">Màn Hình</th>
                                 <td>{{productdetail.detail.screen}}</td>
@@ -49,6 +45,7 @@
                     </table>
                 </div>
             </div>
+        <a href="/order" type="button" class="btn btn-primary" action="GET">Mua ngay!</a>
         </div>
     </div>
 </div>

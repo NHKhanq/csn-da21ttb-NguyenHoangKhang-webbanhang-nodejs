@@ -1,7 +1,7 @@
 const Product = require('../Model/Product')
 
 class HomeController {
-    //get /home
+    //GET /home
     async home(req, res) {
        
             try {
@@ -11,11 +11,6 @@ class HomeController {
             } catch (error) {
               res.status(400).json({ err: "ERROR!!!" });
             }
-          
-
-            
-    
-        // res.render('home')
     }
 }
 
