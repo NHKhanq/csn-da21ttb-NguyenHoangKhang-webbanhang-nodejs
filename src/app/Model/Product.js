@@ -6,11 +6,16 @@ mongoose.plugin(slug);
 
 const Product = new Schema({
     name: {type: String, required: true},
-    description: {type: String, required: true}, // Fixed the typo here
+    detail: {
+        screen: {type: String, required: true},
+        chip: {type: String, required: true},
+        ram: {type: String, required: true},
+        pin: {type: String, required: true},
+        brand: {type: String, required: true},
+    },
     price: {type: Number, required: true},
-    image_url: {type: Buffer, required: true},
+    image_url: {type: String, required: true},
     slug: {type: String, slug: 'name', unique: true}
 }, {timestamps: true})
-//   https://github.com/Automattic/mongoose
 
 module.exports = mongoose.model('Product', Product);
