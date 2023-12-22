@@ -7,10 +7,25 @@ class ProductController {
       const product = await Product.findOne({ slug: req.params.slug });
       res.render('detail', { productdetail: product.toObject() });
     } catch (error) {
-      res.status(400).json({ err: "ERROR!!!" });
+      res.status(400).json({ err: "Error!!!" });
     }
   }
+
+  
+// GET /Product/detail/:slug/buy
+async buy(req, res) {
+  try {
+    const product = await Product.findOne({ slug: req.params.slug });
+    res.render('buy', {
+    Product: product.toObject() 
+    });
+  } catch (error) {
+    res.status(400).json({ err: "Error!!!" });
+  }
+}
 }
 
-// https://mongoosejs.com/docs/api/model.html#Model.findOne()
+
+
+
 module.exports = new ProductController();

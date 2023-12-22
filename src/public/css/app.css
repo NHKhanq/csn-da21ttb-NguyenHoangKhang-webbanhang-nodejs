@@ -1,7 +1,7 @@
 * {
   padding: 0;
   margin: 0;
-  font-family: sans-serif
+  font-family: sans-serif;
   box-sizing: border-box;
 }
 
@@ -53,4 +53,8 @@ body {
 
 .card-title a:hover {
   text-decoration: none;
+}
+.readonly-input {
+  background-color: #f8f8f8; /* Use a light background color */
+  cursor: not-allowed; /* Show a not-allowed cursor */
 }

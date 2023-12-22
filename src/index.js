@@ -6,10 +6,6 @@ const { log } = require("console")
 const app = express()
 const port = 5000;
 
-// const multer = require('multer');
-// const storage = multer.memoryStorage();
-// const upload = multer({ storage: storage });
-
 //concect to db
 const db = require('./config/db/index.js')
 db.connect()
@@ -17,12 +13,10 @@ db.connect()
 //import function controller
 const HomeController = require('./app/Controllers/HomeController')
 const Product = require("./app/Controllers/ProductController.js")
-const Order = require("./app/Controllers/OrderController.js")
 const ProductController = require("./app/Controllers/ProductController.js")
 const CreateController = require("./app/Controllers/CreateController.js")
 const SearchController = require("./app/Controllers/SearchController.js")
 const OrderController = require("./app/Controllers/OrderController.js")
-
 
 
 
@@ -48,9 +42,10 @@ app.get('/', HomeController.home)
 app.get('/create', CreateController.create)
 app.get('/search', SearchController.search)
 app.get('/Product/:slug', ProductController.detail)
-app.post('/order/buy', OrderController.buy)
-app.get('/order', OrderController.order)
+app.get('/Product/detail/:slug/buy', ProductController.buy);
 app.post('/create/post', CreateController.post)
+app.post('/order', OrderController.order)
+
 
 app.listen(port, () => {
   console.log(`App listening on port ${port}`)
