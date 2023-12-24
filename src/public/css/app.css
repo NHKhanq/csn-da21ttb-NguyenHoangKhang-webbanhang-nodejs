@@ -55,6 +55,16 @@ body {
   text-decoration: none;
 }
 .readonly-input {
-  background-color: #f8f8f8; /* Use a light background color */
-  cursor: not-allowed; /* Show a not-allowed cursor */
+  background-color: #f8f8f8;
+  cursor: not-allowed;
+}
+
+/* login */
+.login-container {
+  max-width: 400px;
+  width: 100%;
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
 }

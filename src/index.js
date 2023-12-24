@@ -6,6 +6,23 @@ const { log } = require("console")
 const app = express()
 const port = 5000;
 
+
+//
+const session = require('express-session');
+const bodyParser = require('body-parser');
+app.use(session({
+  secret: 'your-secret-key',
+  resave: true,
+  saveUninitialized: true
+}));
+
+
+
+
+
+// Sử dụng body-parser để đọc dữ liệu từ form
+app.use(bodyParser.urlencoded({ extended: true }));
+
 //concect to db
 const db = require('./config/db/index.js')
 db.connect()
@@ -17,6 +34,7 @@ const ProductController = require("./app/Controllers/ProductController.js")
 const CreateController = require("./app/Controllers/CreateController.js")
 const SearchController = require("./app/Controllers/SearchController.js")
 const OrderController = require("./app/Controllers/OrderController.js")
+const LoginController = require("./app/Controllers/LoginController.js")
 
 
 
@@ -30,6 +48,15 @@ app.use(morgan('combined'))
 app.use(express.urlencoded())//from
 app.use(express.json()); //fetch, axios
 
+app.use(function (req, res, next) {
+  res.locals.showHeader = true;
+  res.locals.showFooter = true;
+  res.locals.showBody = true;
+
+  next();
+});
+
+
 
 //handlebars
 app.engine('handlebars', engine());
@@ -38,7 +65,12 @@ app.set('views', path.join(__dirname, 'resources/views'))
 // console.log('PATH: ', path.join(__dirname, 'resources/views'))
 
 //routes
-app.get('/', HomeController.home)
+//app.get('/', LoginController.login)
+app.get('/', (req, res) => {
+  res.render('login', { showHeader: false, showFooter: false });
+});
+
+app.get('/trangchu', HomeController.home)
 app.get('/create', CreateController.create)
 app.get('/search', SearchController.search)
 app.get('/Product/:slug', ProductController.detail)

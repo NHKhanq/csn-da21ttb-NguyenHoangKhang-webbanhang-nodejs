@@ -5,8 +5,8 @@ class OrderController {
     async order(req, res) {
       try {
         const order = new Order(req.body);
-        order.save();
-       
+        await order.save();
+       // res.redirect('/');
       } catch (error) {
         res.status(400).json({ err: "ERROR!!!" });
       }
