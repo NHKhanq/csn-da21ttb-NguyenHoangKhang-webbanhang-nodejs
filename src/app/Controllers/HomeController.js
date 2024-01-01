@@ -3,7 +3,6 @@ const Product = require('../Model/Product')
 class HomeController {
     //GET /home
     async home(req, res) {
-       
             try {
               const Products = await Product.find({});
               const UIProducts = Products.map(Products => Products.toObject())

@@ -1,6 +1,7 @@
 const path = require("path")
 const express = require("express")
 const morgan = require("morgan")
+const methodOverride = require('method-override')
 const { engine } = require("express-handlebars")
 const app = express()
 const port = 5000;
@@ -14,18 +15,23 @@ app.use(bodyParser.urlencoded({ extended: true }))
 const db = require('./config/db/index.js')
 db.connect()
 
+// override with POST having ?_method=DELETE
+app.use(methodOverride('_method'))
+
 //Gọi các hàm Controller vào file index.js
 const HomeController = require('./app/Controllers/HomeController')
-const Product = require("./app/Controllers/ProductController.js")
+// const Product = require("./app/Controllers/ProductController.js")
+// const Login = require("./app/Model/Login.js")
 const ProductController = require("./app/Controllers/ProductController.js")
 const CreateController = require("./app/Controllers/CreateController.js")
 const SearchController = require("./app/Controllers/SearchController.js")
 const OrderController = require("./app/Controllers/OrderController.js")
 const LoginController = require("./app/Controllers/LoginController.js")
-const Login = require("./app/Model/Login.js")
+const MeController = require("./app/Controllers/MeController.js")
 
 //Sử dụng middleware express.static để cung cấp truy cập cho các tệp tĩnh
 app.use(express.static(path.join(__dirname, 'public')))
+// app.use('/uploads', express.static('uploads'))
 
 //Middleware morgan để tạo logs về các yêu cầu đến server
 app.use(morgan('combined'))
@@ -45,26 +51,22 @@ app.set('views', path.join(__dirname, 'resources/views'))
 
 
 //routes
-
-// Thêm hàm middleware để kiểm tra xác thực
-function ensureAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) {
-    return next();
-  }
-  res.redirect('/login');
-}
 app.get('/', (req, res) => {
   res.render('login', { showHeader: false, showFooter: false });
 });
 
-app.get('/trangchu', HomeController.home)
 app.post('/login/check', LoginController.check);
+app.get('/trangchu', HomeController.home)
 app.get('/create', CreateController.create)
 app.get('/search', SearchController.search)
+app.get('/me/store', MeController.store)
 app.get('/Product/:slug', ProductController.detail)
 app.get('/Product/detail/:slug/buy', ProductController.buy);
+app.get('/Product/:id/edit', ProductController.edit)
+app.delete('/Product/:id', ProductController.delete)
 app.post('/create/post', CreateController.post)
 app.post('/order', OrderController.order)
+app.put('/Product/:id', ProductController.update)
 
 
 
