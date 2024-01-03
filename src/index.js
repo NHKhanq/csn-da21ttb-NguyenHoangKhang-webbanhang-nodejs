@@ -30,8 +30,9 @@ const LoginController = require("./app/Controllers/LoginController.js")
 const MeController = require("./app/Controllers/MeController.js")
 
 //Sử dụng middleware express.static để cung cấp truy cập cho các tệp tĩnh
+app.use('/public', express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')))
-// app.use('/uploads', express.static('uploads'))
+app.use('/uploads', express.static('uploads'))
 
 //Middleware morgan để tạo logs về các yêu cầu đến server
 app.use(morgan('combined'))

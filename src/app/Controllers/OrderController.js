@@ -6,7 +6,6 @@ class OrderController {
       try {
         const order = new Order(req.body);
         await order.save();
-       // res.redirect('/');
       } catch (error) {
         res.status(400).json({ err: "ERROR!!!" });
       }
