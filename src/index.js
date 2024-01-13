@@ -4,7 +4,7 @@ const morgan = require("morgan")
 const methodOverride = require('method-override')
 const { engine } = require("express-handlebars")
 const app = express()
-const port = 5000;
+const port = 5000
 
 // Sử dụng body-parser để đọc dữ liệu từ form 
 const bodyParser = require('body-parser')
@@ -28,6 +28,7 @@ const SearchController = require("./app/Controllers/SearchController.js")
 const OrderController = require("./app/Controllers/OrderController.js")
 const LoginController = require("./app/Controllers/LoginController.js")
 const MeController = require("./app/Controllers/MeController.js")
+const { connect } = require("http2")
 
 //Sử dụng middleware express.static để cung cấp truy cập cho các tệp tĩnh
 app.use('/public', express.static(path.join(__dirname, 'public')));
