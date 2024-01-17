@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
 async function connect() {
     try {
-        console.log(process.env.DB_ENDPOINT)
-        await mongoose.connect(process.env.DB_ENDPOINT);
+        await mongoose.connect('mongodb://127.0.0.1:27017/nodejs-dev');
         console.log('connect successfully!')
     } catch (error) {
         console.log('connect fail!')

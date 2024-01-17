@@ -15,11 +15,13 @@
           <label for="descriptionChip">Chip:</label>
           <input type="text" class="form-control" name="chip" value="{{Product.chip}}" required>
         </div>
-            <div class="form-group">
-      <label for="image_url">Hình ảnh:</label>
-      {{!-- <img src="{{Product.image_url}}"> --}}
-      <input type="text" class="form-control" value="{{Product.image_url}}" name="new_image">
-    </div>
+       <div class="form-group">
+  <label for="image_url">Hình ảnh:</label>
+ <img src="/public/images/{{Product.image_url}}" alt="{{Product.image_url}}">
+ <br>
+ <label for="image_url">Chọn ảnh mới:</label>
+  <input type="file" class="form-control" name="image_url" value="/public/images/{{Product.image_url}}">
+</div>
       </div>
       <div class="col">
         <div class="form-group">
@@ -43,4 +45,3 @@
     <button type="submit" class="btn btn-primary">Lưu lại</button>
   </form>
 </div>
-

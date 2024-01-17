@@ -32,8 +32,10 @@ const { connect } = require("http2")
 
 //Sử dụng middleware express.static để cung cấp truy cập cho các tệp tĩnh
 app.use('/public', express.static(path.join(__dirname, 'public')));
+app.use(express.static(__dirname+"./public/images/"))
 app.use(express.static(path.join(__dirname, 'public')))
 app.use('/uploads', express.static('uploads'))
+app.use(express.static(__dirname + "/public"));
 
 //Middleware morgan để tạo logs về các yêu cầu đến server
 app.use(morgan('combined'))

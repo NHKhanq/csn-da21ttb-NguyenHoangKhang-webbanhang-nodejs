@@ -11,6 +11,12 @@ body {
   min-height: 100vh;
 }
 
+a
+{
+  text-decoration: none;
+}
+
+
 .app {
   flex: 1;
 }
