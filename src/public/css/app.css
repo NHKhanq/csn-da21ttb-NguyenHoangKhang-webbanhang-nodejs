@@ -11,11 +11,9 @@ body {
   min-height: 100vh;
 }
 
-a
-{
+a {
   text-decoration: none;
 }
-
 
 .app {
   flex: 1;
@@ -26,7 +24,6 @@ a
   padding-top: 10px;
   border-radius: 5%;
 }
-
 
 .card-text {
   color: #D0021C;
@@ -60,6 +57,7 @@ a
 .card-title a:hover {
   text-decoration: none;
 }
+
 .readonly-input {
   background-color: #f8f8f8;
   cursor: not-allowed;

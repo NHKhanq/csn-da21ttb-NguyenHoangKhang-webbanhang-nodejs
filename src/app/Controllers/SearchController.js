@@ -6,7 +6,9 @@ class SearchController {
     if (!req.query.q) {
       return res.redirect('/');
     }
+    
     const keyword = req.query.q;
+    
     try {
       const products = await Product.find({ name: { $regex: keyword, $options: 'i' } }).lean();
       res.render('search', { products, keyword });

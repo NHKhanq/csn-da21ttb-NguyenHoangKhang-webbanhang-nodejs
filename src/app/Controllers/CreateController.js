@@ -2,13 +2,11 @@ const Product = require('../Model/Product');
 const multer = require('multer');
 
 const storage = multer.diskStorage({
-  destination: 'public/images/',
-  filename: (req, file, cb) => {
-    cb(null, file.originalname);
-  },
+  destination: 'src/public/images/',
+  filename: (req, file, cb) => cb(null, file.originalname),
 });
 
-const upload = multer({ storage: storage }).single('image_url');
+const upload = multer({ storage }).single('image_url');
 
 class CreateController {
   // GET /create
@@ -37,7 +35,7 @@ class CreateController {
           pin: req.body.pin,
           brand: req.body.brand,
           price: req.body.price,
-          image_url: req.file ? `/public/images/${req.file.filename}` : '',
+          image_url: req.file ? `/${req.file.filename}` : '',
         });
 
         // Lưu vào MongoDB
