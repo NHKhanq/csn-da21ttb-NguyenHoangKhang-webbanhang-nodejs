@@ -1,4 +1,4 @@
-const Product = require('../Model/Product');
+const Product = require('../Model/Product')
 const multer = require('multer');
 
 const storage = multer.diskStorage({
@@ -14,7 +14,7 @@ class CreateController {
     try {
       res.render('create');
     } catch (error) {
-      res.status(400).json({ err: "ERROR!!!" });
+      res.status(400).json({ err: "ERROR!!!" })
     }
   }
 
@@ -23,10 +23,9 @@ class CreateController {
     try {
       upload(req, res, function (err) {
         if (err) {
-          return res.status(500).json({ err: err.message });
+          return res.status(500).json({ err: err.message })
         }
 
-        // Tạo đối tượng Product từ dữ liệu form và đường dẫn ảnh
         const product = new Product({
           name: req.body.name,
           screen: req.body.screen,
@@ -41,12 +40,12 @@ class CreateController {
         // Lưu vào MongoDB
         product.save();
 
-        res.redirect('/trangchu');
+        res.redirect('/trangchu')
       });
     } catch (error) {
-      res.status(400).json({ err: "LỖI!!!" });
+      res.status(400).json({ err: "LỖI!!!" })
     }
   }
 }
 
-module.exports = new CreateController();
+module.exports = new CreateController()
